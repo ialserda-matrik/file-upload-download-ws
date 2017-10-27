@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="fileUpload" resourceRoot="" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="FileUploadServiceSoapBinding" type="wsdl" bindingName="{http://mtom.soap.trainings.matrik.nl/}FileUploadServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/file-upload-download-ws/services/fileUpload?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/file-upload-download-ws/services/fileUpload?wsdl"><con:part><con:url>http://localhost:8080/file-upload-download-ws/services/fileUpload?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FileUploadService" targetNamespace="http://mtom.soap.trainings.matrik.nl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mtom.soap.trainings.matrik.nl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://mtom.soap.trainings.matrik.nl/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="downloadFile" type="tns:downloadFile"/>
+      <xs:element name="downloadFileResponse" type="tns:downloadFileResponse"/>
+      <xs:element name="uploadFile" type="tns:uploadFile"/>
+      <xs:element name="uploadFileResponse" type="tns:uploadFileResponse"/>
+      <xs:complexType name="uploadFile">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="file" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="uploadFileResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="downloadFile">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="downloadFileResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="downloadFileResponse">
+    <wsdl:part element="tns:downloadFileResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadFile">
+    <wsdl:part element="tns:uploadFile" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadFileResponse">
+    <wsdl:part element="tns:uploadFileResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="downloadFile">
+    <wsdl:part element="tns:downloadFile" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FileUpload">
+    <wsdl:operation name="uploadFile">
+      <wsdl:input message="tns:uploadFile" name="uploadFile"></wsdl:input>
+      <wsdl:output message="tns:uploadFileResponse" name="uploadFileResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <wsdl:input message="tns:downloadFile" name="downloadFile"></wsdl:input>
+      <wsdl:output message="tns:downloadFileResponse" name="downloadFileResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileUploadServiceSoapBinding" type="tns:FileUpload">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="uploadFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="uploadFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="uploadFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="downloadFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="downloadFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileUploadService">
+    <wsdl:port binding="tns:FileUploadServiceSoapBinding" name="FileUploadPort">
+      <soap:address location="http://localhost:8080/file-upload-download-ws/services/fileUpload"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/file-upload-download-ws/services/fileUpload</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="downloadFile" bindingOperationName="downloadFile" type="Request-Response" outputName="downloadFileResponse" inputName="downloadFile" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/file-upload-download-ws/services/fileUpload</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://mtom.soap.trainings.matrik.nl/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:downloadFile/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mtom.soap.trainings.matrik.nl/FileUpload/downloadFile"/></con:call></con:operation><con:operation isOneWay="false" action="" name="uploadFile" bindingOperationName="uploadFile" type="Request-Response" outputName="uploadFileResponse" inputName="uploadFile" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/file-upload-download-ws/services/fileUpload</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://mtom.soap.trainings.matrik.nl/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:uploadFile>
+         <!--Optional:-->
+         <file>cid:1081552728798</file>
+      </mtom:uploadFile>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:attachment><con:name>404_baby.jpg</con:name><con:contentType>image/jpeg</con:contentType><con:contentId>404_baby.jpg</con:contentId><con:part>1081552728798</con:part><con:url>/Users/ialserda/Pictures/404_baby.jpg</con:url><con:id>126b66d3-bc78-445f-803f-a73a805321f2</con:id></con:attachment><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mtom.soap.trainings.matrik.nl/FileUpload/uploadFile"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="FileUploadServiceSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="downloadFile TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="downloadFile"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FileUploadServiceSoapBinding</con:interface><con:operation>downloadFile</con:operation><con:request name="downloadFile"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/file-upload-download-ws/services/fileUpload</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://mtom.soap.trainings.matrik.nl/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:downloadFile/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://mtom.soap.trainings.matrik.nl/FileUpload/downloadFile"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="uploadFile TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="uploadFile"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FileUploadServiceSoapBinding</con:interface><con:operation>uploadFile</con:operation><con:request name="uploadFile"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/file-upload-download-ws/services/fileUpload</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://mtom.soap.trainings.matrik.nl/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:uploadFile>
+         <!--Optional:-->
+         <file>cid:871732953684</file>
+      </mtom:uploadFile>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://mtom.soap.trainings.matrik.nl/FileUpload/uploadFile"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
